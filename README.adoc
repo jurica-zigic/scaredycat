@@ -1,0 +1,43 @@
+= Scaredycat
+
+A fork of Fraidycat for the lolcat in you
+
+== Why?
+
+Why not?
+
+== Install
+
+. Clone repo
+. Checkout branch `master`
+. Build docker image:
++
+----
+docker build -t scaredycat .
+----
+. Build the project:
++
+----
+docker run -v scared:/app/build scaredycat npm run webext
+----
+. Copy the files from the volume:
++
+--
+----
+sudo cp -r /var/lib/docker/volumes/scared/_data/webext .
+----
+
+If this causes issues, try inspecting the volume:
+----
+docker volume inspect scared
+----
+--
+. (Optional) Change directory ownership:
++
+----
+chown -R user:group webext
+----
+. Manually install in an *omium browser by going to chrome://extensions, enabling `Developer mode` and clicking `Load unpacked`
+. (be quiet (and drive (far away)))
+
+Or you can just install NPM locally if you prefer littering.
